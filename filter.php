@@ -1002,9 +1002,12 @@ function filter_multiembed_thinglinkcallback($link) {
  * @return string HTML content after processing.
  */
 function filter_multiembed_youtubecallback($link) {
-    $embedcode = '<iframe class="lazyload" width="560" height="315" data-src="//www.youtube.com/embed/';
+    $embedcode = '<div class="video-container">
+                        <div class="video-responsive iframe">
+                            <iframe class="lazyload" width="560" height="315" data-src="//www.youtube.com/embed/';
     $embedcode .= $link[5]; // YouTube video IDs are in the 5th capturing group of the regex.
-    $embedcode .= '" frameborder="0" allowfullscreen></iframe>';
-
+    $embedcode .= '?rel=0" frameborder="0" allowfullscreen allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>';
+    $embedcode .='   </div>
+                </div>';
     return $embedcode;
 }
